@@ -1,4 +1,4 @@
-
+from collections import Counter
 
 def binary_search(key, alist):
     n = len(alist) >> 1
@@ -24,3 +24,21 @@ def remove_duplicates(alist):
             result.append(item)
     return result
 
+def most_frequent(alist):
+   c = Counter(alist)
+   counts = c.most_common(1)
+   return counts[0][0]
+
+# def most_frequent(alist):
+#     adict = {}
+#     for item in alist:
+#         if adict.get(item) is None:
+#             adict[item]=1
+#         else:
+#             adict[item]=adict[item]+1
+#     max=0
+#     max_key=None
+#     for k,v in adict.items():
+#         if v>max:
+#             max_key=k
+#     return adict[max_key]

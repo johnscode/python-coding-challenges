@@ -21,6 +21,10 @@ class TestRemoveDuplicates(unittest.TestCase):
     def test_remove_duplicates(self):
         self.assertEqual([1,2,3], intermediate.remove_duplicates([1,2,1,1,1,2,3,2,1,2]), msg="expected 1,2,3")
 
+class TestMostFrequent(unittest.TestCase):
+    def test_most_freq(self):
+        self.assertEqual(1, intermediate.most_frequent([1,2,1,1,1,2,3,2,1,2]),msg="expected 1")
+
 
 if __name__ == '__main__':
     unittest.main()
