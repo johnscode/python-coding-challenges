@@ -15,6 +15,7 @@ def factorial(n):
         fact *= i
     return fact
 
+
 def fibonacci(n):
     if not isinstance(n, int):
         raise TypeError("expected integer")
@@ -29,7 +30,21 @@ def fibonacci(n):
     print(f'n: {n} - {fib}')
     return fib
 
-def palindrome_check(word):
-    trimmed = ''.join(char.lower() for char in word if char.isalnum())
+
+def fib2(num):
+    fib = [1,1]
+    for n in range(2, num+1):
+        fib.append(fib[n-2]+fib[n-1])
+    return fib
+
+
+# def palindrome_check(word):
+#     trimmed = ''.join(char.lower() for char in word if char.isalnum())
+#     return trimmed == trimmed[::-1]
+
+
+def palindrome_check(str):
+    lower = str.lower()
+    trimmed = lower.strip()
     return trimmed == trimmed[::-1]
 

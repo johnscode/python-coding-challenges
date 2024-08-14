@@ -26,6 +26,52 @@ class TestMostFrequent(unittest.TestCase):
         self.assertEqual(1, intermediate.most_frequent([1,2,1,1,1,2,3,2,1,2]),msg="expected 1")
 
 
+class TestStack(unittest.TestCase):
+    def test_pushpop(self):
+        stack = intermediate.Stack()
+        stack.push(x = "yoyo")
+        stack.push(5)
+        self.assertEqual(5, stack.pop(),msg="expected 5")
+        self.assertEqual("yoyo", stack.pop(),msg="expected yoyo")
+        self.assertEqual(None, stack.pop(),msg="expected None")
+
+
+class TestLinkedList(unittest.TestCase):
+    def test_append(self):
+        ll = intermediate.LinkedList()
+        ll.append(5)
+        ll.append(6)
+        self.assertEqual([5,6], ll.as_list(),msg="expected 5,6")
+
+    def test_reverse(self):
+        ll = intermediate.LinkedList()
+        ll.append(5)
+        ll.append(6)
+        ll.reverse()
+        self.assertEqual([6,5], ll.as_list(),msg="expected 6,5")
+        self.assertEqual(6, ll.head.data,msg="expected 6")
+
+
+class TestListEvenSquares(unittest.TestCase):
+    def test_list_even_squares(self):
+        print(intermediate.list_even_squares(20))
+
+
+class TestCSVProcess(unittest.TestCase):
+    def test_process(self):
+        self.assertEqual(36, intermediate.process_file('./sample.csv'),msg="expected 36")
+
+    def test_process_pandas(self):
+        self.assertEqual(36, intermediate.process_pandas('./sample.csv'),msg="expected 36")
+
+    def test_write(self):
+        intermediate.write_data('./output.csv')
+
+class TestDecorator(unittest.TestCase):
+    def test_greet(self):
+        self.assertEqual('HELLO WORLD', intermediate.hello(), msg='expected uppercase')
+
+
 if __name__ == '__main__':
     unittest.main()
 

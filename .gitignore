@@ -162,3 +162,5 @@ cython_debug/
 #.idea/
 /.idea/
 /python-coding-challenges.iml
+/intermediate/output.csv
+/challenging/python-coding-challenges.code-workspace

@@ -32,6 +32,7 @@ class TestFibonacci(unittest.TestCase):
         with self.assertRaises(ValueError, msg="expected value error for n<2"):
             easy.fibonacci(1)
 
+
 class TestPalindromeCheck(unittest.TestCase):
     def test_palindrome_check(self):
         self.assertEqual(easy.palindrome_check('abba'), True, 'expected true')
