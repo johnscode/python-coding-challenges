@@ -132,7 +132,7 @@ class Hashmap:
                 return item[1]
         return None
 
-    def remote(self, key):
+    def remove(self, key):
         index = self._hash(key)
         for i, item in enumerate(self.table[index]):
             if item[0] == key:

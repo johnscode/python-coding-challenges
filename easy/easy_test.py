@@ -1,7 +1,23 @@
 import unittest
 
 import easy
+from easy import compare_versions
 
+
+class TestParseVersion(unittest.TestCase):
+    def test_parse_version(self):
+        # compare_versions('2', '2.1')
+        self.assertEqual(0, compare_versions('2', '2.0'), msg="expected 0")
+        self.assertEqual(0, compare_versions('2', '2.0.0.0.0'), msg="expected 0")
+        self.assertEqual(0, compare_versions('2', '2.0.0.0'), msg="expected 0")
+        self.assertEqual(0, compare_versions('2', '2.0.0'), msg="expected 0")
+        self.assertEqual(0, compare_versions('2', '2.0.0'), msg="expected 0")
+        self.assertEqual(0, compare_versions('2', '2.0'), msg="expected 0")
+        self.assertEqual(-1, compare_versions('2', '2.0.0.0.1'), msg="expected -1")
+        self.assertEqual(-1, compare_versions('2', '2.1'), msg="expected -1")
+        self.assertEqual(1, compare_versions('2.1.0', '2.0.1'), msg="expected 1")
+        self.assertEqual(1, compare_versions('2.10.0.1', '2.1.0.10'), msg="expected 1")
+        self.assertEqual(1, compare_versions('2.0.1', '1.2000.1'), msg="expected 1")
 
 class MyTestFactorial(unittest.TestCase):
     def test_factorial_ints(self):
@@ -20,17 +36,17 @@ class MyTestFactorial(unittest.TestCase):
 
 class TestFibonacci(unittest.TestCase):
     def test_fib(self):
-        self.assertEqual([1,1,2],easy.fibonacci(2),msg="expected 1,1,2")
-        self.assertEqual([1,1,2,3],easy.fibonacci(3),msg="expected 1,1,2,3")
-        self.assertEqual([1,1,2,3,5,8],easy.fibonacci(5),msg="expected 1,1,2,3,5,8")
+        self.assertEqual([0,1,1],easy.fibonacci(2),msg="expected 0,1,1")
+        self.assertEqual([0,1,1,2],easy.fibonacci(3),msg="expected 1,1,2,3")
+        self.assertEqual([0,1,1,2,3,5],easy.fibonacci(5),msg="expected 1,1,2,3,5,8")
 
     def test_fib_non_int(self):
         with self.assertRaises(TypeError, msg="expected type error for non-int"):
             easy.fibonacci(15.3)
 
-    def test_fib_one_or_neg(self):
-        with self.assertRaises(ValueError, msg="expected value error for n<2"):
-            easy.fibonacci(1)
+    def test_fib_neg(self):
+        with self.assertRaises(ValueError, msg="expected value error for n<0"):
+            easy.fibonacci(-1)
 
 
 class TestPalindromeCheck(unittest.TestCase):
